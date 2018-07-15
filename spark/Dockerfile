@@ -1,40 +1,27 @@
-FROM java:openjdk-8-jdk
+FROM centos:centos7.5.1804
 
-ENV hadoop_ver 2.6.5
-ENV spark_ver 2.3.1
+ENV HADOOP_VER 2.6.5
+ENV SPARK_VER 2.3.1
 
+RUN yum -y install java-1.8.0-openjdk
 
-# Get Hadoop from US Apache mirror and extract just the native
-# libs. (Until we care about running HDFS with these containers, this
-# is all we need.)
+# Get Hadoop from US Apache mirror and extract just the native libs.
 RUN mkdir -p /opt && \
     cd /opt && \
-    curl http://apache.claz.org/hadoop/common/hadoop-${hadoop_ver}/hadoop-${hadoop_ver}.tar.gz | \
-    tar -zx hadoop-${hadoop_ver}/lib/native && \
-    ln -s hadoop-${hadoop_ver} hadoop && \
-    echo Hadoop ${hadoop_ver} native libraries installed in /opt/hadoop/lib/native
+    curl http://apache.claz.org/hadoop/common/hadoop-${HADOOP_VER}/hadoop-${HADOOP_VER}.tar.gz | \
+    tar -zx hadoop-${HADOOP_VER}/lib/native && \
+    ln -s hadoop-${HADOOP_VER} hadoop
 
 # Get Spark from US Apache mirror.
 RUN mkdir -p /opt && \
     cd /opt && \
-    curl http://apache.claz.org/spark/spark-${spark_ver}/spark-${spark_ver}-bin-hadoop2.6.tgz | \
+    curl http://apache.claz.org/spark/spark-${SPARK_VER}/spark-${SPARK_VER}-bin-hadoop2.6.tgz | \
     tar -zx && \
-    ln -s spark-${spark_ver}-bin-hadoop2.6 spark && \
-    echo Spark ${spark_ver} installed in /opt
-
-# Add the GCS connector.
-RUN cd /opt/spark/jars && \
-    curl -O https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-latest-hadoop2.jar
-
-# if numpy is installed on a driver it needs to be installed on all
-# workers, so install it everywhere
-RUN apt-get update && \
-    apt-get install -y python-numpy && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    ln -s spark-${SPARK_VER}-bin-hadoop2.6 spark
 
 ADD log4j.properties /opt/spark/conf/log4j.properties
 ADD start-common.sh start-worker start-master /
 ADD core-site.xml /opt/spark/conf/core-site.xml
 ADD spark-defaults.conf /opt/spark/conf/spark-defaults.conf
+
 ENV PATH $PATH:/opt/spark/bin
