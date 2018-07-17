@@ -46,6 +46,7 @@ ENV SPARK_DIST_CLASSPATH "$HADOOP_HOME/etc/hadoop/*:$HADOOP_HOME/share/hadoop/co
 
 ADD hive-site.xml $SPARK_HOME/conf
 ADD hive-site.xml $HIVE_HOME/conf
+ADD hive-site.xml $Z_HOME/conf
 
 ENV PATH $PATH:/opt/spark/bin:/opt/hive/bin
 

@@ -4,7 +4,7 @@ zeppelin: build-zeppelin push-zeppelin
 .PHONY: push build-spark push-spark clean-spark push-zeppelin zeppelin build-zeppelin
 
 TAG = 2.3.1_v7
-ZEPPELIN_TAG = 0.8.0_v1
+ZEPPELIN_TAG = 0.8.0_v2
 
 build-spark:
 	docker build -t art-hq.intranet.qualys.com:5001/k8s.gcr.io/spark .
