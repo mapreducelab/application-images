@@ -1,0 +1,63 @@
+<configuration>
+  
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:postgresql://kubenode07.p02.eng.sjc01.qualys.com:31306/metastore</value>
+  </property>
+  
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>org.postgresql.Driver</value>
+  </property>
+  
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>hive</value>
+  </property>
+  
+  <property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>hive</value>
+  </property>
+  
+  <property>
+    <name>datanucleus.autoCreateSchema</name>
+    <value>false</value>
+  </property>
+  
+  <property>
+    <name>hive.execution.engine</name>
+    <value>spark</value>
+  </property>
+  
+  <property>
+    <name>fs.alluxio.impl</name>
+    <value>alluxio.hadoop.FileSystem</value>
+  </property>
+  
+  <property>
+    <name>fs.defaultFS</name>
+    <value>alluxio://kubenode05.p02.eng.sjc01.qualys.com:31001</value>
+  </property>
+  
+  <property>
+    <name>spark.master</name>
+    <value>spark://spark-hadoop-master:7077</value>
+  </property>
+  
+  <property>
+    <name>spark.eventLog.dir</name>
+    <value>alluxio://kubenode05.p02.eng.sjc01.qualys.com:31001/sparkeventLog</value>
+  </property>
+  
+  <property>
+    <name>spark.yarn.jars</name>
+    <value>alluxio://kubenode05.p02.eng.sjc01.qualys.com:31001/spark-jars/*</value>
+  </property>
+  
+  <property>
+    <name>spark.home</name>
+    <value>/opt/spark</value>
+  </property>
+
+</configuration>
