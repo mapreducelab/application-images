@@ -42,7 +42,7 @@
   
   <property>
     <name>spark.master</name>
-    <value>spark://spark-master:7077</value>
+    <value>spark://spark-master:6066</value>
   </property>
   
   <property>
