@@ -35,8 +35,7 @@ RUN curl http://downloads.alluxio.org/downloads/files/${ALLUXIO_VER}/alluxio-${A
 
 
 ADD log4j.properties /opt/spark/conf/log4j.properties
-ADD start-common.sh start-worker start-master /
-ADD core-site.xml /opt/spark/conf/core-site.xml
+ADD start-worker start-master /
 ADD spark-defaults.conf /opt/spark/conf/spark-defaults.conf
 
 ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk
