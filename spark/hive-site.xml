@@ -2,7 +2,7 @@
   
   <property>
     <name>javax.jdo.option.ConnectionURL</name>
-    <value>jdbc:postgresql://kubenode07.p02.eng.sjc01.qualys.com:31306/metastore</value>
+    <value>jdbc:postgresql://postgresql:5432/metastore</value>
   </property>
   
   <property>
@@ -37,7 +37,7 @@
   
   <property>
     <name>fs.defaultFS</name>
-    <value>alluxio://kubenode05.p02.eng.sjc01.qualys.com:31001</value>
+    <value>alluxio://alluxio-master:19998</value>
   </property>
   
   <property>
@@ -47,12 +47,12 @@
   
   <property>
     <name>spark.eventLog.dir</name>
-    <value>alluxio://kubenode05.p02.eng.sjc01.qualys.com:31001/sparkeventLog</value>
+    <value>alluxio://alluxio-master:19998/sparkeventLog</value>
   </property>
   
   <property>
     <name>spark.yarn.jars</name>
-    <value>alluxio://kubenode05.p02.eng.sjc01.qualys.com:31001/spark-jars/*</value>
+    <value>alluxio://alluxio-master:19998/spark-jars/*</value>
   </property>
   
   <property>
