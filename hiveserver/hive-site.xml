@@ -26,11 +26,6 @@
   </property>
   
   <property>
-    <name>hive.execution.engine</name>
-    <value>spark</value>
-  </property>
-  
-  <property>
     <name>fs.alluxio.impl</name>
     <value>alluxio.hadoop.FileSystem</value>
   </property>
@@ -41,23 +36,13 @@
   </property>
   
   <property>
-    <name>spark.master</name>
-    <value>spark://spark-hadoop-master:6066</value>
-  </property>
-  
-  <property>
     <name>spark.eventLog.dir</name>
     <value>alluxio://alluxio-master:19998/sparkeventLog</value>
   </property>
-  
+
   <property>
-    <name>spark.yarn.jars</name>
-    <value>alluxio://alluxio-master:19998/spark-jars/*</value>
-  </property>
-  
-  <property>
-    <name>spark.home</name>
-    <value>/opt/spark</value>
+    <name>hive.server2.transport.mode</name>
+    <value>http</value>
   </property>
 
 </configuration>
