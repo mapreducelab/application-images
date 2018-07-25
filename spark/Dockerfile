@@ -39,15 +39,15 @@ RUN curl https://art-hq.intranet.qualys.com/artifactory/dev-common/ojdbc8-full.t
     cp OJDBC8-Full/ojdbc8.jar /opt/spark-${SPARK_VER}-bin-without-hadoop/jars/ojdbc8.jar && \
     cp OJDBC8-Full/ojdbc8.jar /opt/hadoop-${HADOOP_VER}/share/hadoop/common/ojdbc8.jar
 
-ADD log4j.properties /opt/spark/conf/log4j.properties
-ADD start-worker start-master /
-ADD spark-defaults.conf /opt/spark/conf/spark-defaults.conf
-
 ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk
 ENV HADOOP_HOME /opt/hadoop
 ENV SPARK_HOME /opt/spark
 ENV HIVE_HOME /opt/hive
 ENV SPARK_DIST_CLASSPATH "$HADOOP_HOME/etc/hadoop/*:$HADOOP_HOME/share/hadoop/common/lib/*:$HADOOP_HOME/share/hadoop/common/*:$HADOOP_HOME/share/hadoop/hdfs/*:$HADOOP_HOME/share/hadoop/hdfs/lib/*:$HADOOP_HOME/share/hadoop/hdfs/*:$HADOOP_HOME/share/hadoop/yarn/lib/*:$HADOOP_HOME/share/hadoop/yarn/*:$HADOOP_HOME/share/hadoop/mapreduce/lib/*:$HADOOP_HOME/share/hadoop/mapreduce/*:$HADOOP_HOME/share/hadoop/tools/lib/*"
+
+ADD log4j.properties /opt/spark/conf/log4j.properties
+ADD start-worker start-master /
+ADD spark-defaults.conf /opt/spark/conf/spark-defaults.conf
 
 ADD hive-site.xml $SPARK_HOME/conf
 ADD hive-site.xml $HIVE_HOME/conf
