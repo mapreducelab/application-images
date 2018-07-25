@@ -22,10 +22,10 @@ RUN curl http://central.maven.org/maven2/com/datastax/spark/spark-cassandra-conn
 RUN curl https://art-hq.intranet.qualys.com/artifactory/dev-common/ojdbc8-full.tar | tar -x && \
     cp OJDBC8-Full/ojdbc8.jar /opt/spark-${SPARK_VER}-bin-hadoop2.7/jars/ojdbc8.jar
 
+ENV SPARK_HOME /opt/spark
+
 ADD log4j.properties /opt/spark/conf/log4j.properties
 ADD hive-site.xml $SPARK_HOME/conf
-
-ENV SPARK_HOME /opt/spark
 
 ENV PATH $PATH:/opt/spark/bin
 
