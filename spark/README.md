@@ -1,7 +1,7 @@
 # How to build and push Spark
 
 ```
-make spark
+make
 ```
 
 # Spark shell
