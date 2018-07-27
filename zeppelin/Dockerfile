@@ -43,6 +43,11 @@ RUN curl -o hive_jdbc.zip http://awssupportdatasvcs.com/bootstrap-actions/Simba/
     unzip -a hive_jdbc/AmazonHiveJDBC41-1.0.9.1060.zip -d hive_jdbc41 && \
     cp -r hive_jdbc41/* ${Z_HOME}/lib
 
+# Get hive-jdbc 3.0.0
+RUN curl -o ${Z_HOME}/lib/hive-jdbc-3.0.0.jar http://central.maven.org/maven2/org/apache/hive/hive-jdbc/3.0.0/hive-jdbc-3.0.0.jar && \
+    curl -o ${Z_HOME}/lib/hive-metastore-3.0.0.jar http://central.maven.org/maven2/org/apache/hive/hive-metastore/3.0.0/hive-metastore-3.0.0.jar && \
+    curl -o ${Z_HOME}/lib/hive-service-3.0.0.jar http://central.maven.org/maven2/org/apache/hive/hive-service/3.0.0/hive-service-3.0.0.jar
+
 ENV SPARK_HOME /opt/spark
 
 ADD log4j.properties /opt/spark/conf/log4j.properties
