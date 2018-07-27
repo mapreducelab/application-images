@@ -2,7 +2,7 @@ all: zeppelin
 zeppelin: build-zeppelin push-zeppelin
 .PHONY: zeppelin build-zeppelin push-zeppelin clean-zeppelin
 
-ZEPPELIN_TAG = 0.1.8
+ZEPPELIN_TAG = 0.1.9
 
 build-zeppelin:
 	docker build -t art-hq.intranet.qualys.com:5001/k8s.gcr.io/zeppelin .
