@@ -34,7 +34,7 @@ RUN curl http://apache.claz.org/hive/hive-${HIVE_VER}/apache-hive-${HIVE_VER}-bi
     cp apache-hive-${HIVE_VER}-bin/lib/postgresql-metadata-storage-0.9.2.jar /opt/spark-${SPARK_VER}-bin-hadoop2.7/jars && \
     cp apache-hive-${HIVE_VER}-bin/lib/postgresql-9.4.1208.jre7.jar /opt/spark-${SPARK_VER}-bin-hadoop2.7/jars && \
     cp apache-hive-${HIVE_VER}-bin/lib/postgresql-metadata-storage-0.9.2.jar ${Z_HOME}/lib && \
-    cp apache-hive-${HIVE_VER}-bin/lib/postgresql-9.4.1208.jre7.jar ${Z_HOME} && \
+    cp apache-hive-${HIVE_VER}-bin/lib/postgresql-9.4.1208.jre7.jar ${Z_HOME}/lib && \
     rm -rf apache-hive-${HIVE_VER}-bin
 
 # Get HIVE JDBC from Amazon
