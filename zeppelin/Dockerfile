@@ -46,7 +46,14 @@ RUN curl -o hive_jdbc.zip http://awssupportdatasvcs.com/bootstrap-actions/Simba/
 # Get hive-jdbc 3.0.0
 RUN curl -o ${Z_HOME}/lib/hive-jdbc-3.0.0.jar http://central.maven.org/maven2/org/apache/hive/hive-jdbc/3.0.0/hive-jdbc-3.0.0.jar && \
     curl -o ${Z_HOME}/lib/hive-metastore-3.0.0.jar http://central.maven.org/maven2/org/apache/hive/hive-metastore/3.0.0/hive-metastore-3.0.0.jar && \
-    curl -o ${Z_HOME}/lib/hive-service-3.0.0.jar http://central.maven.org/maven2/org/apache/hive/hive-service/3.0.0/hive-service-3.0.0.jar
+    curl -o ${Z_HOME}/lib/hive-service-3.0.0.jar http://central.maven.org/maven2/org/apache/hive/hive-service/3.0.0/hive-service-3.0.0.jar && \
+    curl -o ${Z_HOME}/lib/hive-service-rpc-3.0.0.jar http://central.maven.org/maven2/org/apache/hive/hive-service-rpc/3.0.0/hive-service-rpc-3.0.0.jar && \
+    curl -o ${Z_HOME}/lib/commons-cli-1.4.jar http://central.maven.org/maven2/commons-cli/commons-cli/1.4/commons-cli-1.4.jar
+
+# Get config
+COPY zeppelin-site.xml ${Z_HOME}/conf
+COPY interpreter-list ${Z_HOME}/conf
+COPY interpreter.json ${Z_HOME}/conf
 
 ENV SPARK_HOME /opt/spark
 
