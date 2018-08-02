@@ -1,5 +1,10 @@
 <configuration>
-  
+
+  <property>
+    <name>hive.metastore.schema.verification</name>
+    <value>false</value>
+  </property>
+
   <property>
     <name>javax.jdo.option.ConnectionURL</name>
     <value>jdbc:postgresql://postgresql:5432/metastore</value>

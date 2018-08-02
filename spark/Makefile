@@ -2,7 +2,7 @@ all: spark
 spark: build-spark push-spark clean-spark
 .PHONY: push build-spark push-spark clean-spark
 
-SPARK_TAG = 0.1.7
+SPARK_TAG = 0.1.9
 
 # Spark without Hadoop
 build-spark:

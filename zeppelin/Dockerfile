@@ -2,7 +2,7 @@ FROM apache/zeppelin:0.8.0
 
 ENV ALLUXIO_VER 1.7.1
 ENV SPARK_VER 2.3.1
-ENV HIVE_VER 2.3.3
+ENV HIVE_VER 3.0.0
 
 WORKDIR /opt
 
@@ -28,14 +28,12 @@ RUN curl https://art-hq.intranet.qualys.com/artifactory/dev-common/ojdbc8-full.t
     cp OJDBC8-Full/ojdbc8.jar /opt/spark-${SPARK_VER}-bin-hadoop2.7/jars && \
     cp OJDBC8-Full/ojdbc8.jar ${Z_HOME}/lib
 
-
 # Get Hive.
 RUN curl http://apache.claz.org/hive/hive-${HIVE_VER}/apache-hive-${HIVE_VER}-bin.tar.gz | tar -zx && \
-    cp apache-hive-${HIVE_VER}-bin/lib/postgresql-metadata-storage-0.9.2.jar /opt/spark-${SPARK_VER}-bin-hadoop2.7/jars && \
+    cp apache-hive-${HIVE_VER}-bin/lib/postgresql-metadata-storage-0.12.0.jar /opt/spark-${SPARK_VER}-bin-hadoop2.7/jars && \
     cp apache-hive-${HIVE_VER}-bin/lib/postgresql-9.4.1208.jre7.jar /opt/spark-${SPARK_VER}-bin-hadoop2.7/jars && \
-    cp apache-hive-${HIVE_VER}-bin/lib/postgresql-metadata-storage-0.9.2.jar ${Z_HOME}/lib && \
-    cp apache-hive-${HIVE_VER}-bin/lib/postgresql-9.4.1208.jre7.jar ${Z_HOME}/lib && \
-    rm -rf apache-hive-${HIVE_VER}-bin
+    cp apache-hive-${HIVE_VER}-bin/lib/postgresql-metadata-storage-0.12.0.jar ${Z_HOME}/lib && \
+    cp apache-hive-${HIVE_VER}-bin/lib/postgresql-9.4.1208.jre7.jar ${Z_HOME}/lib
 
 # Get HIVE JDBC from Amazon
 RUN curl -o hive_jdbc.zip http://awssupportdatasvcs.com/bootstrap-actions/Simba/AmazonHiveJDBC-1.0.9.1060.zip && \
@@ -59,6 +57,7 @@ ENV SPARK_HOME /opt/spark
 
 ADD log4j.properties /opt/spark/conf/log4j.properties
 ADD hive-site.xml $SPARK_HOME/conf
+ADD zeppelin-env.sh ${Z_HOME}/conf
 
 ENV PATH $PATH:/opt/spark/bin
 

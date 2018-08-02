@@ -2,7 +2,7 @@ all: hiveserver
 hiveserver: build-hiveserver push-hiveserver clean-hiveserver
 .PHONY: build-hiveserver push-hiveserver clean-hiveserver
 
-HIVESERVER_TAG = 0.1.15
+HIVESERVER_TAG = 0.1.18
 
 # hiveserver
 build-hiveserver:
