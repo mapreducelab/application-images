@@ -1,11 +1,6 @@
 <configuration>
 
   <property>
-    <name>hive.metastore.schema.verification</name>
-    <value>false</value>
-  </property>
-
-  <property>
     <name>javax.jdo.option.ConnectionURL</name>
     <value>jdbc:postgresql://postgresql:5432/metastore</value>
   </property>
@@ -54,25 +49,35 @@
     <name>spark.eventLog.dir</name>
     <value>alluxio://alluxio-master:19998/sparkeventLog</value>
   </property>
-
-  <property>
-    <name>spark.yarn.jars</name>
-    <value>alluxio://alluxio-master:19998/spark-jars/*</value>
-  </property>
-
+  
   <property>
     <name>spark.home</name>
     <value>/opt/spark</value>
   </property>
 
   <property>
-    <name>spark.executor.memory</name>
-    <value>4G</value>
+    <name>hive.server2.transport.mode</name>
+    <value>http</value>
   </property>
 
   <property>
-    <name>hive.server2.transport.mode</name>
-    <value>http</value>
+    <name>spark.executor.memory</name>
+    <value>4g</value>
+  </property>
+
+  <property>
+    <name>spark.executor.memoryOverhead</name>
+    <value>384m</value>
+  </property>
+
+  <property>
+    <name>spark.driver.memoryOverhead</name>
+    <value>384m</value>
+  </property>
+
+  <property>
+    <name>spark.scheduler.minRegisteredResourcesRatio</name>
+    <value>0.8</value>
   </property>
 
 </configuration>
