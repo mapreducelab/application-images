@@ -9,6 +9,11 @@
     <name>javax.jdo.option.ConnectionDriverName</name>
     <value>org.postgresql.Driver</value>
   </property>
+
+  <property>
+    <name>datanucleus.autoCreateSchema</name>
+    <value>false</value>
+  </property>
   
   <property>
     <name>javax.jdo.option.ConnectionUserName</name>

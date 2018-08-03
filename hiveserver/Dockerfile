@@ -42,6 +42,10 @@ RUN curl https://art-hq.intranet.qualys.com/artifactory/dev-common/ojdbc8-full.t
     cp OJDBC8-Full/ojdbc8.jar /opt/spark-${SPARK_VER}-bin-without-hadoop/jars/ojdbc8.jar && \
     cp OJDBC8-Full/ojdbc8.jar /opt/hadoop-${HADOOP_VER}/share/hadoop/common/ojdbc8.jar
 
+# Get Tez
+RUN curl -o apache-hive-${HIVE_VER}-bin/lib/tez-api-0.9.1.jar http://central.maven.org/maven2/org/apache/tez/tez-api/0.9.1/tez-api-0.9.1.jar && \
+    curl -o apache-hive-${HIVE_VER}-bin/lib/tez-dag-0.9.1.jar http://central.maven.org/maven2/org/apache/tez/tez-dag/0.9.1/tez-dag-0.9.1.jar
+
 ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk
 ENV HIVE_HOME /opt/hive
 ENV SPARK_HOME /opt/spark
@@ -49,8 +53,8 @@ ENV HADOOP_HOME /opt/hadoop
 ENV PATH $PATH:/opt/hive/bin:/opt/spark/bin
 ENV SPARK_DIST_CLASSPATH "$HADOOP_HOME/etc/hadoop/*:$HADOOP_HOME/share/hadoop/common/lib/*:$HADOOP_HOME/share/hadoop/common/*:$HADOOP_HOME/share/hadoop/hdfs/*:$HADOOP_HOME/share/hadoop/hdfs/lib/*:$HADOOP_HOME/share/hadoop/hdfs/*:$HADOOP_HOME/share/hadoop/yarn/lib/*:$HADOOP_HOME/share/hadoop/yarn/*:$HADOOP_HOME/share/hadoop/mapreduce/lib/*:$HADOOP_HOME/share/hadoop/mapreduce/*:$HADOOP_HOME/share/hadoop/tools/lib/*"
 
-ADD log4j.properties /opt/spark/conf/log4j.properties
-ADD spark-defaults.conf /opt/spark/conf/spark-defaults.conf
+COPY log4j.properties /opt/spark/conf/log4j.properties
+COPY spark-defaults.conf /opt/spark/conf/spark-defaults.conf
 COPY hive-site.xml $HIVE_HOME/conf
 COPY hive-site.xml $SPARK_HOME/conf
 

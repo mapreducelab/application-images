@@ -7,7 +7,7 @@
       "properties": {
         "default.url": {
           "name": "default.url",
-          "value": "jdbc:hive2://hiveserver:10001",
+          "value": "jdbc:hive2://hiveserver:10001/default;transportMode\u003dhttp;httpPath\u003dcliservice",
           "type": "string"
         },
         "default.driver": {
@@ -42,7 +42,7 @@
         },
         "default.user": {
           "name": "default.user",
-          "value": "hive",
+          "value": "root",
           "type": "string"
         },
         "zeppelin.jdbc.concurrent.max_connection": {
@@ -67,7 +67,8 @@
         },
         "default.statementPrecode": {
           "name": "default.statementPrecode",
-          "value": ""
+          "value": "",
+          "type": "string"
         },
         "zeppelin.jdbc.concurrent.use": {
           "name": "zeppelin.jdbc.concurrent.use",
@@ -83,6 +84,10 @@
           "name": "zeppelin.jdbc.interpolation",
           "value": false,
           "type": "checkbox"
+        },
+        "spark.executor.memory": {
+          "value": "4G",
+          "type": "textarea"
         }
       },
       "status": "READY",
@@ -100,25 +105,44 @@
       ],
       "dependencies": [
         {
-          "groupArtifactVersion": "/zeppelin/lib/hive-jdbc-3.0.0.jar",
+          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/hive-jdbc-3.0.0.jar",
           "local": false
         },
         {
-          "groupArtifactVersion": "/zeppelin/lib/hive-service-3.0.0.jar",
+          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/hive-service-3.0.0.jar",
           "local": false
         },
         {
-          "groupArtifactVersion": "/zeppelin/lib/hive-metastore-3.0.0.jar",
+          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/hive-metastore-3.0.0.jar",
           "local": false,
           "exclusions": []
         },
         {
-          "groupArtifactVersion": "/zeppelin/lib/libthrift-0.9.0.jar",
+          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/libthrift-0.9.3.jar",
           "local": false
         },
         {
-          "groupArtifactVersion": "/zeppelin/lib/TCLIServiceClient.jar",
+          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/hive-service-rpc-3.0.0.jar",
           "local": false
+        },
+        {
+          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/curator-client-2.12.0.jar",
+          "local": false
+        },
+        {
+          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-2.7.6.jar",
+          "local": false,
+          "exclusions": []
+        },
+        {
+          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/hive-common-3.0.0.jar",
+          "local": false,
+          "exclusions": []
+        },
+        {
+          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/hive-exec-3.0.0.jar",
+          "local": false,
+          "exclusions": []
         }
       ],
       "option": {
@@ -142,13 +166,13 @@
           "value": "",
           "type": "url"
         },
-        "ignite.peerClassLoadingEnabled": {
-          "name": "ignite.peerClassLoadingEnabled",
+        "ignite.clientMode": {
+          "name": "ignite.clientMode",
           "value": true,
           "type": "checkbox"
         },
-        "ignite.clientMode": {
-          "name": "ignite.clientMode",
+        "ignite.peerClassLoadingEnabled": {
+          "name": "ignite.peerClassLoadingEnabled",
           "value": true,
           "type": "checkbox"
         },
@@ -209,6 +233,11 @@
           "value": "30000",
           "type": "number"
         },
+        "zeppelin.python.maxResult": {
+          "name": "zeppelin.python.maxResult",
+          "value": "1000",
+          "type": "number"
+        },
         "zeppelin.python.useIPython": {
           "name": "zeppelin.python.useIPython",
           "value": true,
@@ -217,11 +246,6 @@
         "zeppelin.ipython.grpc.message_size": {
           "name": "zeppelin.ipython.grpc.message_size",
           "value": "33554432",
-          "type": "number"
-        },
-        "zeppelin.python.maxResult": {
-          "name": "zeppelin.python.maxResult",
-          "value": "1000",
           "type": "number"
         }
       },
@@ -295,11 +319,6 @@
       "name": "sap",
       "group": "sap",
       "properties": {
-        "universe.password": {
-          "name": "universe.password",
-          "value": "",
-          "type": "password"
-        },
         "universe.api.url": {
           "name": "universe.api.url",
           "value": "http://localhost:6405/biprws",
@@ -314,6 +333,11 @@
           "name": "universe.user",
           "value": "",
           "type": "string"
+        },
+        "universe.password": {
+          "name": "universe.password",
+          "value": "",
+          "type": "password"
         }
       },
       "status": "READY",
@@ -516,16 +540,6 @@
       "name": "pig",
       "group": "pig",
       "properties": {
-        "zeppelin.pig.execType": {
-          "name": "zeppelin.pig.execType",
-          "value": "mapreduce",
-          "type": "string"
-        },
-        "SPARK_JAR": {
-          "name": "SPARK_JAR",
-          "value": "",
-          "type": "textarea"
-        },
         "zeppelin.pig.includeJobStats": {
           "name": "zeppelin.pig.includeJobStats",
           "value": false,
@@ -535,6 +549,16 @@
           "name": "zeppelin.pig.maxResult",
           "value": "1000",
           "type": "number"
+        },
+        "zeppelin.pig.execType": {
+          "name": "zeppelin.pig.execType",
+          "value": "mapreduce",
+          "type": "string"
+        },
+        "SPARK_JAR": {
+          "name": "SPARK_JAR",
+          "value": "",
+          "type": "textarea"
         },
         "SPARK_MASTER": {
           "name": "SPARK_MASTER",
@@ -578,15 +602,15 @@
       "name": "flink",
       "group": "flink",
       "properties": {
-        "port": {
-          "name": "port",
-          "value": "6123",
-          "type": "number"
-        },
         "host": {
           "name": "host",
           "value": "local",
           "type": "string"
+        },
+        "port": {
+          "name": "port",
+          "value": "6123",
+          "type": "number"
         }
       },
       "status": "READY",
@@ -1084,16 +1108,6 @@
       "name": "spark",
       "group": "spark",
       "properties": {
-        "spark.executor.memory": {
-          "name": "spark.executor.memory",
-          "value": "",
-          "type": "string"
-        },
-        "zeppelin.spark.sql.interpolation": {
-          "name": "zeppelin.spark.sql.interpolation",
-          "value": false,
-          "type": "checkbox"
-        },
         "zeppelin.spark.concurrentSQL": {
           "name": "zeppelin.spark.concurrentSQL",
           "value": false,
@@ -1109,10 +1123,10 @@
           "value": "R",
           "type": "string"
         },
-        "spark.app.name": {
-          "name": "spark.app.name",
-          "value": "Zeppelin",
-          "type": "string"
+        "spark.cassandra.connection.host": {
+          "name": "spark.cassandra.connection.host",
+          "value": "10.44.67.116,10.44.67.117,10.44.67.118,10.44.67.119,10.44.67.120",
+          "type": "textarea"
         },
         "zeppelin.R.image.width": {
           "name": "zeppelin.R.image.width",
@@ -1128,6 +1142,56 @@
           "name": "zeppelin.dep.additionalRemoteRepository",
           "value": "spark-packages,http://dl.bintray.com/spark-packages/maven,false;",
           "type": "textarea"
+        },
+        "zeppelin.dep.localrepo": {
+          "name": "zeppelin.dep.localrepo",
+          "value": "local-repo",
+          "type": "string"
+        },
+        "spark.cassandra.connection.port": {
+          "name": "spark.cassandra.connection.port",
+          "value": "50126",
+          "type": "textarea"
+        },
+        "spark.cassandra.auth.password": {
+          "name": "spark.cassandra.auth.password",
+          "value": "c8ss8ndr8p01",
+          "type": "textarea"
+        },
+        "zeppelin.spark.sql.stacktrace": {
+          "name": "zeppelin.spark.sql.stacktrace",
+          "value": false,
+          "type": "checkbox"
+        },
+        "zeppelin.spark.useHiveContext": {
+          "name": "zeppelin.spark.useHiveContext",
+          "value": true,
+          "type": "checkbox"
+        },
+        "zeppelin.spark.printREPLOutput": {
+          "name": "zeppelin.spark.printREPLOutput",
+          "value": true,
+          "type": "checkbox"
+        },
+        "spark.cores.max": {
+          "name": "spark.cores.max",
+          "value": "",
+          "type": "number"
+        },
+        "spark.executor.memory": {
+          "name": "spark.executor.memory",
+          "value": "",
+          "type": "string"
+        },
+        "zeppelin.spark.sql.interpolation": {
+          "name": "zeppelin.spark.sql.interpolation",
+          "value": false,
+          "type": "checkbox"
+        },
+        "spark.app.name": {
+          "name": "spark.app.name",
+          "value": "Zeppelin",
+          "type": "string"
         },
         "zeppelin.spark.maxResult": {
           "name": "zeppelin.spark.maxResult",
@@ -1159,23 +1223,8 @@
           "value": true,
           "type": "checkbox"
         },
-        "zeppelin.dep.localrepo": {
-          "name": "zeppelin.dep.localrepo",
-          "value": "local-repo",
-          "type": "string"
-        },
         "zeppelin.pyspark.useIPython": {
           "name": "zeppelin.pyspark.useIPython",
-          "value": true,
-          "type": "checkbox"
-        },
-        "zeppelin.spark.sql.stacktrace": {
-          "name": "zeppelin.spark.sql.stacktrace",
-          "value": false,
-          "type": "checkbox"
-        },
-        "zeppelin.spark.useHiveContext": {
-          "name": "zeppelin.spark.useHiveContext",
           "value": true,
           "type": "checkbox"
         },
@@ -1189,30 +1238,9 @@
           "value": "out.format \u003d \u0027html\u0027, comment \u003d NA, echo \u003d FALSE, results \u003d \u0027asis\u0027, message \u003d F, warning \u003d F, fig.retina \u003d 2",
           "type": "textarea"
         },
-        "zeppelin.spark.printREPLOutput": {
-          "name": "zeppelin.spark.printREPLOutput",
-          "value": true,
-          "type": "checkbox"
-        },
-        "spark.cores.max": {
-          "name": "spark.cores.max",
-          "value": "",
-          "type": "number"
-        },
-        "spark.cassandra.connection.host": {
-          "value": "10.44.67.116,10.44.67.117,10.44.67.118,10.44.67.119,10.44.67.120",
-          "type": "textarea"
-        },
         "spark.cassandra.auth.username": {
+          "name": "spark.cassandra.auth.username",
           "value": "cassandra",
-          "type": "textarea"
-        },
-        "spark.cassandra.auth.password": {
-          "value": "c8ss8ndr8p01",
-          "type": "textarea"
-        },
-        "spark.cassandra.connection.port": {
-          "value": "50126",
           "type": "textarea"
         }
       },
@@ -1724,6 +1752,30 @@
     }
   },
   "interpreterBindings": {
+    "2DPV7GH3T": [
+      "spark",
+      "md",
+      "angular",
+      "sh",
+      "livy",
+      "alluxio",
+      "file",
+      "flink",
+      "python",
+      "ignite",
+      "lens",
+      "cassandra",
+      "kylin",
+      "elasticsearch",
+      "hive",
+      "jdbc",
+      "hbase",
+      "bigquery",
+      "groovy",
+      "sap",
+      "pig",
+      "neo4j"
+    ],
     "2DM766YNB": [
       "cassandra",
       "spark",

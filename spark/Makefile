@@ -2,9 +2,8 @@ all: spark
 spark: build-spark push-spark clean-spark
 .PHONY: push build-spark push-spark clean-spark
 
-SPARK_TAG = 0.1.9
+SPARK_TAG = 0.1.10
 
-# Spark without Hadoop
 build-spark:
 	docker build -t art-hq.intranet.qualys.com:5001/k8s.gcr.io/spark .
 	docker tag art-hq.intranet.qualys.com:5001/k8s.gcr.io/spark art-hq.intranet.qualys.com:5001/k8s.gcr.io/spark:$(SPARK_TAG)
