@@ -1,7 +1,7 @@
 FROM centos:centos7.5.1804
 
-ENV HADOOP_VER 2.7.6
-ENV HIVE_VER 3.0.0
+ENV HADOOP_VER 2.9.1
+ENV HIVE_VER 3.1.0
 ENV ALLUXIO_VER 1.7.1
 ENV SPARK_VER 2.3.1
 
@@ -38,6 +38,12 @@ RUN curl http://central.maven.org/maven2/com/datastax/spark/spark-cassandra-conn
 RUN curl https://art-hq.intranet.qualys.com/artifactory/dev-common/ojdbc8-full.tar | tar -x && \
     cp OJDBC8-Full/ojdbc8.jar /opt/spark-${SPARK_VER}-bin-without-hadoop/jars/ojdbc8.jar && \
     cp OJDBC8-Full/ojdbc8.jar /opt/hadoop-${HADOOP_VER}/share/hadoop/common/ojdbc8.jar
+
+# Get Jars from hive to Spark
+RUN cp /opt/apache-hive-${HIVE_VER}-bin/lib/hive-common-${HIVE_VER}.jar /opt/spark-${SPARK_VER}-bin-without-hadoop/jars && \
+    cp /opt/apache-hive-${HIVE_VER}-bin/lib/hive-exec-${HIVE_VER}.jar /opt/spark-${SPARK_VER}-bin-without-hadoop/jars && \
+    cp /opt/apache-hive-${HIVE_VER}-bin/lib/hive-metastore-${HIVE_VER}.jar /opt/spark-${SPARK_VER}-bin-without-hadoop/jars && \
+    cp /opt/apache-hive-${HIVE_VER}-bin/lib/postgresql-metadata-storage-0.12.0.jar /opt/spark-${SPARK_VER}-bin-without-hadoop/jars
 
 ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk
 ENV HADOOP_HOME /opt/hadoop

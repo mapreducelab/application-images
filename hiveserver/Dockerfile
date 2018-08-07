@@ -1,7 +1,7 @@
 FROM centos:centos7.5.1804
 
-ENV HADOOP_VER 2.7.6
-ENV HIVE_VER 3.0.0
+ENV HADOOP_VER 2.9.1
+ENV HIVE_VER 3.1.0
 ENV ALLUXIO_VER 1.7.1
 ENV SPARK_VER 2.3.1
 
@@ -53,8 +53,6 @@ ENV HADOOP_HOME /opt/hadoop
 ENV PATH $PATH:/opt/hive/bin:/opt/spark/bin
 ENV SPARK_DIST_CLASSPATH "$HADOOP_HOME/etc/hadoop/*:$HADOOP_HOME/share/hadoop/common/lib/*:$HADOOP_HOME/share/hadoop/common/*:$HADOOP_HOME/share/hadoop/hdfs/*:$HADOOP_HOME/share/hadoop/hdfs/lib/*:$HADOOP_HOME/share/hadoop/hdfs/*:$HADOOP_HOME/share/hadoop/yarn/lib/*:$HADOOP_HOME/share/hadoop/yarn/*:$HADOOP_HOME/share/hadoop/mapreduce/lib/*:$HADOOP_HOME/share/hadoop/mapreduce/*:$HADOOP_HOME/share/hadoop/tools/lib/*"
 
-COPY log4j.properties /opt/spark/conf/log4j.properties
-COPY spark-defaults.conf /opt/spark/conf/spark-defaults.conf
 COPY hive-site.xml $HIVE_HOME/conf
 COPY hive-site.xml $SPARK_HOME/conf
 

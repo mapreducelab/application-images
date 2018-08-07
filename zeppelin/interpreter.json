@@ -105,28 +105,28 @@
       ],
       "dependencies": [
         {
-          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/hive-jdbc-3.0.0.jar",
+          "groupArtifactVersion": "/opt/apache-hive-3.1.0-bin/lib/hive-jdbc-3.1.0.jar",
           "local": false
         },
         {
-          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/hive-service-3.0.0.jar",
+          "groupArtifactVersion": "/opt/apache-hive-3.1.0-bin/lib/hive-service-3.1.0.jar",
           "local": false
         },
         {
-          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/hive-metastore-3.0.0.jar",
+          "groupArtifactVersion": "/opt/apache-hive-3.1.0-bin/lib/hive-metastore-3.1.0.jar",
           "local": false,
           "exclusions": []
         },
         {
-          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/libthrift-0.9.3.jar",
+          "groupArtifactVersion": "/opt/apache-hive-3.1.0-bin/lib/libthrift-0.9.3.jar",
           "local": false
         },
         {
-          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/hive-service-rpc-3.0.0.jar",
+          "groupArtifactVersion": "/opt/apache-hive-3.1.0-bin/lib/hive-service-rpc-3.1.0.jar",
           "local": false
         },
         {
-          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/curator-client-2.12.0.jar",
+          "groupArtifactVersion": "/opt/apache-hive-3.1.0-bin/lib/curator-client-2.12.0.jar",
           "local": false
         },
         {
@@ -135,12 +135,12 @@
           "exclusions": []
         },
         {
-          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/hive-common-3.0.0.jar",
+          "groupArtifactVersion": "/opt/apache-hive-3.1.0-bin/lib/hive-common-3.1.0.jar",
           "local": false,
           "exclusions": []
         },
         {
-          "groupArtifactVersion": "/opt/apache-hive-3.0.0-bin/lib/hive-exec-3.0.0.jar",
+          "groupArtifactVersion": "/opt/apache-hive-3.1.0-bin/lib/hive-exec-3.1.0.jar",
           "local": false,
           "exclusions": []
         }
