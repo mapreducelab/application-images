@@ -33,11 +33,18 @@
   <property>
     <name>fs.alluxio.impl</name>
     <value>alluxio.hadoop.FileSystem</value>
+    <description>The Alluxio FileSystem (Hadoop 1.x and 2.x)</description>
+  </property>
+
+  <property>
+    <name>fs.AbstractFileSystem.alluxio.impl</name>
+    <value>alluxio.hadoop.AlluxioFileSystem</value>
+    <description>The Alluxio AbstractFileSystem (Hadoop 2.x)</description>
   </property>
 
   <property>
     <name>fs.defaultFS</name>
-    <value>alluxio://alluxio-master:19998</value>
+    <value>alluxio://sandbox01.p02.eng.sjc01.qualys.com:19998</value>
   </property>
 
   <property>
@@ -47,7 +54,7 @@
 
   <property>
     <name>spark.eventLog.dir</name>
-    <value>alluxio://alluxio-master:19998/sparkeventLog</value>
+    <value>alluxio://sandbox01.p02.eng.sjc01.qualys.com:19998/sparkeventLog</value>
   </property>
   
   <property>
@@ -78,6 +85,11 @@
   <property>
     <name>spark.scheduler.minRegisteredResourcesRatio</name>
     <value>0.8</value>
+  </property>
+
+  <property>
+    <name>alluxio.user.file.readtype.default</name>
+    <value>NO_CACHE</value>
   </property>
 
 </configuration>

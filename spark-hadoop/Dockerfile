@@ -2,7 +2,7 @@ FROM centos:centos7.5.1804
 
 ENV ALLUXIO_VER 1.7.1
 ENV SPARK_VER 2.3.1
-ENV HIVE_VER 2.3.3
+ENV HIVE_VER 3.1.0
 
 RUN yum -y install java-1.8.0-openjdk which
 
@@ -27,7 +27,7 @@ RUN curl https://art-hq.intranet.qualys.com/artifactory/dev-common/ojdbc8-full.t
 
 # Get Hive.
 RUN curl http://apache.claz.org/hive/hive-${HIVE_VER}/apache-hive-${HIVE_VER}-bin.tar.gz | tar -zx && \
-    cp apache-hive-${HIVE_VER}-bin/lib/postgresql-metadata-storage-0.9.2.jar /opt/spark-${SPARK_VER}-bin-hadoop2.7/jars && \
+    cp apache-hive-${HIVE_VER}-bin/lib/postgresql-metadata-storage-0.12.0.jar /opt/spark-${SPARK_VER}-bin-hadoop2.7/jars && \
     cp apache-hive-${HIVE_VER}-bin/lib/postgresql-9.4.1208.jre7.jar /opt/spark-${SPARK_VER}-bin-hadoop2.7/jars && \
     rm -rf apache-hive-${HIVE_VER}-bin
 

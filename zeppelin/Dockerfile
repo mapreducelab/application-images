@@ -1,9 +1,9 @@
 FROM apache/zeppelin:0.8.0
 
-ENV HADOOP_VER 2.7.6
+ENV HADOOP_VER 2.9.1
 ENV ALLUXIO_VER 1.7.1
 ENV SPARK_VER 2.3.1
-ENV HIVE_VER 3.0.0
+ENV HIVE_VER 3.1.0
 
 WORKDIR /opt
 
@@ -47,10 +47,10 @@ RUN curl -o hive_jdbc.zip http://awssupportdatasvcs.com/bootstrap-actions/Simba/
     cp -r hive_jdbc41/* ${Z_HOME}/lib
 
 # Get hive-jdbc 3.0.0
-RUN curl -o ${Z_HOME}/lib/hive-jdbc-3.0.0.jar http://central.maven.org/maven2/org/apache/hive/hive-jdbc/3.0.0/hive-jdbc-3.0.0.jar && \
-    curl -o ${Z_HOME}/lib/hive-metastore-3.0.0.jar http://central.maven.org/maven2/org/apache/hive/hive-metastore/3.0.0/hive-metastore-3.0.0.jar && \
-    curl -o ${Z_HOME}/lib/hive-service-3.0.0.jar http://central.maven.org/maven2/org/apache/hive/hive-service/3.0.0/hive-service-3.0.0.jar && \
-    curl -o ${Z_HOME}/lib/hive-service-rpc-3.0.0.jar http://central.maven.org/maven2/org/apache/hive/hive-service-rpc/3.0.0/hive-service-rpc-3.0.0.jar && \
+RUN curl -o ${Z_HOME}/lib/hive-jdbc-3.1.0.jar http://central.maven.org/maven2/org/apache/hive/hive-jdbc/3.1.0/hive-jdbc-3.1.0.jar && \
+    curl -o ${Z_HOME}/lib/hive-metastore-3.1.0.jar http://central.maven.org/maven2/org/apache/hive/hive-metastore/3.1.0/hive-metastore-3.1.0.jar && \
+    curl -o ${Z_HOME}/lib/hive-service-3.1.0.jar http://central.maven.org/maven2/org/apache/hive/hive-service/3.1.0/hive-service-3.1.0.jar && \
+    curl -o ${Z_HOME}/lib/hive-service-rpc-3.1.0.jar http://central.maven.org/maven2/org/apache/hive/hive-service-rpc/3.1.0/hive-service-rpc-3.1.0.jar && \
     curl -o ${Z_HOME}/lib/commons-cli-1.4.jar http://central.maven.org/maven2/commons-cli/commons-cli/1.4/commons-cli-1.4.jar
 
 ENV SPARK_HOME /opt/spark
