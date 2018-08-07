@@ -130,7 +130,7 @@
           "local": false
         },
         {
-          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-2.7.6.jar",
+          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-2.9.1.jar",
           "local": false,
           "exclusions": []
         },
