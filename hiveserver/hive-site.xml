@@ -69,7 +69,12 @@
 
   <property>
     <name>spark.executor.memory</name>
-    <value>4g</value>
+    <value>8g</value>
+  </property>
+
+  <property>
+    <name>spark.driver.memory</name>
+    <value>2g</value>
   </property>
 
   <property>

@@ -2,7 +2,7 @@ all: hiveserver
 hiveserver: build-hiveserver push-hiveserver clean-hiveserver
 .PHONY: build-hiveserver push-hiveserver clean-hiveserver
 
-HIVESERVER_TAG = 0.1.32
+HIVESERVER_TAG = 0.1.33
 
 build-hiveserver:
 	docker build -t art-hq.intranet.qualys.com:5001/k8s.gcr.io/hiveserver .
